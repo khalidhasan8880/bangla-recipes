@@ -21,13 +21,13 @@ const Header = () => {
             <div className="hidden sm:flex ">
                 <NavLink className={({ isActive }) => isActive ? 'text-pr font-semibold me-3' : 'me-3'} to='/'> Home</NavLink>
                 <NavLink className={({ isActive }) => isActive ? 'text-pr font-semibold me-3' : 'me-3'} to='/blog'> Blog</NavLink>
-
+                <Tooltip id="my-tooltip" />
                 <label data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} tabIndex={0} className="btn btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full">
                         <img src={user?.photoURL} alt='Profile Picture' />
                     </div>
                 </label>
-                <Tooltip id="my-tooltip" />
+                
                 {user ?  <Link onClick={logOutHandler} className='btn-custom'>Log out</Link> : <Link to="/login" className='btn-custom'>Log In</Link> }
             </div>
 
@@ -55,7 +55,7 @@ const Header = () => {
                     </li>
                 </ul>
             </div>
-
+          
         </div>
     );
 };

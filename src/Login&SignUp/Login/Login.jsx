@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Login = () => {
-    const loginHandler =(e)=>{
+    // hooks
+    const {logIn} = useContext(AuthContext)
+    // handler
+    const loginHandler = (e) => {
         e.preventDefault()
         const form = e.target
 
         const email = form.email.value
         const password = form.password.value
-      
+        logIn(email,password).then(res=>{
+            console.log(res.user);
+        }).catch(err=>{
+            console.log(err);
+        })
+        
     }
     return (
         <div className='flex justify-center '>
