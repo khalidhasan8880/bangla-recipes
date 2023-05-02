@@ -10,6 +10,7 @@ const SignUp = () => {
         const photo = form.photo.value
         const email = form.email.value
         const password = form.password.value
+        const confirmPassword = form.confirmPassword.value
        
     }
     return (
@@ -20,6 +21,7 @@ const SignUp = () => {
                 <input name='photo' type="text" placeholder="Photo URL" className="input input-bordered input-secondary w-full max-w-xs" />
                 <input name='email' type="email" placeholder="Email" className="input input-bordered input-secondary w-full max-w-xs" />
                 <input name='password' type="password" placeholder="Password" className="input input-bordered input-secondary w-full max-w-xs" />
+                <input name='confirmPassword' type="password" placeholder="Confirm Password" className="input input-bordered input-secondary w-full max-w-xs" />
                 <button className='btn-custom' type='submit'>Register</button>
                 <small>Already have account ? please <Link className='text-link' to='/login'>Login Here</Link></small>
                 <p className='text-pr'>error messages</p>
