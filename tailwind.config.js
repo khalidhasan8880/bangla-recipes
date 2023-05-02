@@ -8,7 +8,8 @@ export default {
     extend: {},
     colors: {
       'pr': '#FF4A52',
-      'white': '#FAF7F5'
+      'white': '#FAF7F5',
+      'link': '#0066F2'
     },
   },
   daisyui: {
