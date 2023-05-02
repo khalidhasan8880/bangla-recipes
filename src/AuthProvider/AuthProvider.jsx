@@ -1,35 +1,71 @@
-import React, { createContext } from 'react';
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import React, { createContext, useEffect, useState } from 'react';
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateCurrentUser, updateProfile } from "firebase/auth";
 import app from '../Firebase/firebase.config';
 
 export const AuthContext = createContext()
 
 const auth = getAuth(app)
 const googleProvider = new GoogleAuthProvider
-const AuthProvider = ({Children}) => {
+const AuthProvider = ({children}) => {
+    // hooks
+    const [user, setUser]=useState(null)
+    const [loading, setLoading]=useState(true)
+    // functions
     const createUser = (email, password)=>{
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
     const logIn = (email, password)=>{
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
     const logOut = ()=>{
         return signOut(auth)
     }
     const continueWithGoogle = ()=>{
+        setLoading(true)
         return signInWithPopup(auth,googleProvider)
     }
     
+    const updateInformation = (name,photo)=>{
+        return updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photo
+          }).then(() => {
+            console.log( 'Profile updated!');
+            
+          }).catch((error) => {
+            console.log('profile update failed');
+            // ...
+          });
+    }
+    // observer
+    useEffect(()=>{
+        const unsubscribe = onAuthStateChanged(auth, user=>{
+            if (user) {
+                setUser(user)
+                setLoading(false)
+            }
+            else{
+                setUser(null)
+            }
+        })
+        return ()=>{
+            unsubscribe()
+        }
+    },[])
+    console.log(user);
     const authInfo = {
         createUser,
         logIn,
         logOut,
-        continueWithGoogle
+        continueWithGoogle,
+        updateInformation, 
+        user
 
     }
     return (
         <AuthContext.Provider value={authInfo}>
-            {Children}
+            {children}
         </AuthContext.Provider>
     );
 };

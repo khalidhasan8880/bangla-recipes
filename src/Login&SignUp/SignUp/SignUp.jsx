@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const SignUp = () => {
     const [error , setError] = useState('')
+    const {createUser, updateInformation} = useContext(AuthContext)
+    const navigate = useNavigate()
     const registerHandler =(e)=>{
-        setError('')
-        
-
         e.preventDefault()
+
+        setError('')
+
+
         const form = e.target
 
         const name = form.name.value
@@ -24,6 +28,16 @@ const SignUp = () => {
             setError('password must be 6 character or more !!')
             return
         }
+
+        createUser(email,password).then((result)=>{
+            updateInformation(name, photo)
+            console.log(result.user);
+            navigate('/')
+
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
     }
     return (
         <div className='flex justify-center '>
