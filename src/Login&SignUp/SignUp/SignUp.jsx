@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 const SignUp = () => {
     const [error , setError] = useState('')
     const registerHandler =(e)=>{
+        setError('')
+        
+
         e.preventDefault()
         const form = e.target
 
@@ -14,11 +17,11 @@ const SignUp = () => {
         const confirmPassword = form.confirmPassword.value
        
         if (password !== confirmPassword) {
-            setError('password does not match')
+            setError('password does not match !!')
             return
         }
         if (password.length < 6) {
-            setError('password must be 6 character or more')
+            setError('password must be 6 character or more !!')
             return
         }
     }
@@ -33,7 +36,7 @@ const SignUp = () => {
                 <input name='confirmPassword' type="password" placeholder="Confirm Password" className="input input-bordered input-secondary w-full max-w-xs" />
                 <button className='btn-custom' type='submit'>Register</button>
                 <small>Already have account ? please <Link className='text-link' to='/login'>Login Here</Link></small>
-                <p className='text-pr'>error messages</p>
+                <p className='text-pr'>{error}</p>
             </form>
         </div>
     );

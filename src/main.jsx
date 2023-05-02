@@ -10,11 +10,12 @@ import {
 import Blog from './Pages/Blog.jsx';
 import Login from './Login&SignUp/Login/Login.jsx';
 import SignUp from './Login&SignUp/SignUp/SignUp.jsx';
+import AuthProvider from './AuthProvider/AuthProvider.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<App></App>,
-    children:[
+    element: <App></App>,
+    children: [
       {
         path: '/blog',
         element: <Blog></Blog>
@@ -23,19 +24,21 @@ const router = createBrowserRouter([
         path: '/login',
         element: <Login></Login>
       },
-      
+
       {
         path: '/sign-up',
         element: <SignUp></SignUp>
       },
-      
+
     ]
   },
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}>
+    <AuthProvider>
+      <RouterProvider router={router}>
 
-    </RouterProvider>
+      </RouterProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )
