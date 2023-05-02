@@ -7,10 +7,18 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Header from './components/Header/Header.jsx';
+import Blog from './Pages/Blog.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element:<App></App>,
+    children:[
+      {
+        path: '/blog',
+        element: <Blog></Blog>
+      }
+    ]
   },
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
