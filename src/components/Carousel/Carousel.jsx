@@ -34,7 +34,7 @@ const Carousel = ({ chefs }) => {
                             <div className='grid sm:grid-cols-2 w-full sm:px-11 md:px-20 py-20 '>
                                 <div className=' order-2 sm:order-1 flex items-center justify-center'>
                                     <div className='text-white  ms-2'>
-                                      <h2 className='font-bold text-1xl sm:text-3xl'>{chef.chefName}</h2>
+                                      <h2 className='font-bold text-3xl sm:text-5xl'>{chef.chefName}</h2>
                                       <p className='my-5 text-sm'>{chef.bio}</p>
                                       <Link to={`/recipes/${chef.id}`} className='btn-custom '>View Recipes</Link>
                                     </div>

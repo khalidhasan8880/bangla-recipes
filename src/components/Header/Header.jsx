@@ -17,7 +17,7 @@ const Header = () => {
     return (
         <div className="navbar bg-base-100">
             <div className="flex-1">
-                <a className="btn btn-ghost normal-case font-extrabold text-2xl text-pr">Bangla Recipes</a>
+                <Link to='/' className="normal-case font-extrabold text-2xl text-pr">Bangla Recipes</Link>
             </div>
             <div className="hidden sm:flex ">
                 <NavLink className={({ isActive }) => isActive ? 'text-pr font-semibold me-3' : 'me-3'} to='/'> Home</NavLink>
