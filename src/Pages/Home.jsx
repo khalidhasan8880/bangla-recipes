@@ -18,7 +18,7 @@ const Home = () => {
                 <h3 className='text-center mb-11 text-2xl font-bold'>Chefs</h3>
                 <div className='flex flex-wrap gap-8 justify-center  '>
                     {
-                        chefs.map(chef => <ChefCard chef={chef}></ChefCard>)
+                        chefs.map(chef => <ChefCard key={chef.id} chef={chef}></ChefCard>)
                     }
                 </div>
             </div>

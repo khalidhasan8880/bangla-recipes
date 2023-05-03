@@ -21,7 +21,7 @@ const ChefRecipes = () => {
                 <h3 className='text-center mb-11 text-2xl font-bold'>Available Recipes</h3>
                 <div className='grid sm:grid-cols-2 gap-3 justify-center  '>
                     {
-                        recipes.map(recipe => <RecipeCard recipe={recipe}> </RecipeCard>)
+                        recipes.map((recipe,index) => <RecipeCard key={index}  recipe={recipe}> </RecipeCard>)
                     }
                 </div>
             </div>
