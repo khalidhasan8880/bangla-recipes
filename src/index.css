@@ -9,3 +9,7 @@
         @apply rounded-md px-4 py-2 bg-pr text-white font-semibold
     }
   }
+
+*{
+    box-sizing: border-box;
+}
