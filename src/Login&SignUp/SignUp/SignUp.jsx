@@ -43,8 +43,8 @@ const SignUp = () => {
         <div className='flex justify-center '>
             <form onSubmit={registerHandler} className='flex flex-col gap-y-3 border-solid border-2 border-pr p-11 rounded-lg sm:w-96'>
                 <h3 className='text-2xl font-semibold text-pr'>Please Sign Up</h3>
-                <input required name='name' type="text" placeholder="Name" className="input input-bordered input-secondary w-full max-w-xs" />
-                <input required name='photo' type="text" placeholder="Photo URL" className="input input-bordered input-secondary w-full max-w-xs" />
+                <input  name='name' type="text" placeholder="Name" className="input input-bordered input-secondary w-full max-w-xs" />
+                <input  name='photo' type="text" placeholder="Photo URL" className="input input-bordered input-secondary w-full max-w-xs" />
                 <input required name='email' type="email" placeholder="Email" className="input input-bordered input-secondary w-full max-w-xs" />
                 <input required name='password' type="password" placeholder="Password" className="input input-bordered input-secondary w-full max-w-xs" />
                 <input name='confirmPassword' type="password" placeholder="Confirm Password" className="input input-bordered input-secondary w-full max-w-xs" />

@@ -32,22 +32,37 @@ const Header = () => {
                                         <img src={user?.photoURL} alt='Profile Picture' />
                                     </div>
                                     :
-                                    <FaUser size={22}></FaUser>
+                                    <FaUser data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName}  size={22}></FaUser>
                             }
                         </label>
                         :
                         ""
                 }
                 <Tooltip place='left' id="my-tooltip" />
-                {user ? <Link onClick={logOutHandler} className='btn-custom'>Log out</Link> : <Link to="/login" className='btn-custom'>Log In</Link>}
+                {
+                    user ? 
+                        <Link onClick={logOutHandler} className='btn-custom'>Log out</Link> 
+                        : 
+                        <Link to="/login" className='btn-custom'>Log In</Link>
+                }
             </div>
 
             <div className="dropdown dropdown-end sm:hidden">
-                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full">
-                        <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                    </div>
-                </label>
+            {
+                    user ?
+                        <label data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                            {
+                                user?.photoURL ?
+                                    <div className="w-10 rounded-full">
+                                        <img src={user?.photoURL} alt='Profile Picture' />
+                                    </div>
+                                    :
+                                    <FaUser data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName}  size={22}></FaUser>
+                            }
+                        </label>
+                        :
+                        ""
+                }
                 <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
 
                     <li>
