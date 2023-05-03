@@ -6,10 +6,10 @@ import { Tooltip } from 'react-tooltip'
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
     const [open, setOpen] = useState(false)
-    const logOutHandler=()=>{
-        logOut().then(res=>{
+    const logOutHandler = () => {
+        logOut().then(res => {
             console.log(res);
-        }).catch(err=>{
+        }).catch(err => {
             console.log(err);
         })
     }
@@ -21,14 +21,19 @@ const Header = () => {
             <div className="hidden sm:flex ">
                 <NavLink className={({ isActive }) => isActive ? 'text-pr font-semibold me-3' : 'me-3'} to='/'> Home</NavLink>
                 <NavLink className={({ isActive }) => isActive ? 'text-pr font-semibold me-3' : 'me-3'} to='/blog'> Blog</NavLink>
-                <Tooltip id="my-tooltip" />
-                <label data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full">
-                        <img src={user?.photoURL} alt='Profile Picture' />
-                    </div>
-                </label>
                 
-                {user ?  <Link onClick={logOutHandler} className='btn-custom'>Log out</Link> : <Link to="/login" className='btn-custom'>Log In</Link> }
+                {
+                    user ?
+                        <label data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img src={user?.photoURL} alt='Profile Picture' />
+                            </div>
+                        </label>
+                        :
+                        ""
+                }
+<Tooltip  place='left' id="my-tooltip" />
+                {user ? <Link onClick={logOutHandler} className='btn-custom'>Log out</Link> : <Link to="/login" className='btn-custom'>Log In</Link>}
             </div>
 
             <div className="dropdown dropdown-end sm:hidden">
@@ -48,14 +53,14 @@ const Header = () => {
                     <li>
                         {
                             user ?
-                             <Link onClick={logOutHandler} className='btn-custom'>Log out</Link>
-                            :
-                            <Link to="/login" className='btn-custom'>Log In</Link> 
+                                <Link onClick={logOutHandler} className='btn-custom'>Log out</Link>
+                                :
+                                <Link to="/login" className='btn-custom'>Log In</Link>
                         }
                     </li>
                 </ul>
             </div>
-          
+
         </div>
     );
 };

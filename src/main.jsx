@@ -13,6 +13,7 @@ import SignUp from './Login&SignUp/SignUp/SignUp.jsx';
 import AuthProvider from './AuthProvider/AuthProvider.jsx';
 import Home from './Pages/Home.jsx';
 import ChefRecipes from './Pages/ChefRecipes.jsx';
+import PrivetRoute from './PrivetRoute/PrivetRoute.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/recipes/:id',
-        element: <ChefRecipes></ChefRecipes>,
+        element: <PrivetRoute><ChefRecipes></ChefRecipes></PrivetRoute>,
         loader: ({params})=>fetch(`https://bangla-recipes-server.vercel.app/chef/${params.id}`)
       },
       {

@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { Link } from 'react-router-dom';
 const Carousel = ({ chefs }) => {
     return (
         <Swiper
@@ -23,7 +24,7 @@ const Carousel = ({ chefs }) => {
                 chefs.map(chef =>
                     <SwiperSlide style={{
                         backgroundImage: `linear-gradient( rgba(1, 2, 2, 0.5),rgba(215, 0, 0, 0.4)), url(${chef?.recipes[0]?.recipePicture})`,
-                        
+                       
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
                         backgroundPosition: 'center'
@@ -35,7 +36,7 @@ const Carousel = ({ chefs }) => {
                                     <div className='text-white  ms-2'>
                                       <h2 className='font-bold text-1xl sm:text-3xl'>{chef.chefName}</h2>
                                       <p className='my-5 text-sm'>{chef.bio}</p>
-                                      <button className='btn-custom '>View Recipes</button>
+                                      <Link to={`/recipes/${chef.id}`} className='btn-custom '>View Recipes</Link>
                                     </div>
                                 </div>
                                 <div className=' order-1 sm:order-2 flex items-center justify-center'>
