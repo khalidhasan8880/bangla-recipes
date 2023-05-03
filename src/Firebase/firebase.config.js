@@ -4,13 +4,14 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+console.log( import.meta.env.VITE_APIKEY);
 const firebaseConfig = {
-  apiKey: "AIzaSyDz2BbU33rEjsWedadrZnrjdaJ1WTkk5_0",
-  authDomain: "bangla-recipes-d82f8.firebaseapp.com",
-  projectId: "bangla-recipes-d82f8",
-  storageBucket: "bangla-recipes-d82f8.appspot.com",
-  messagingSenderId: "376686580084",
-  appId: "1:376686580084:web:6e90b8d9ffc07b4cfedc21"
+  apiKey: import.meta.env.VITE_APIKEY ,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN ,
+  projectId: import.meta.env.VITE_PROJECTID ,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET ,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID 
 };
 
 // Initialize Firebase

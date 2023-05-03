@@ -22,7 +22,7 @@ const Carousel = ({ chefs }) => {
         >
             {
                 chefs.map(chef =>
-                    <SwiperSlide style={{
+                    <SwiperSlide key={chef.id} style={{
                         backgroundImage: `linear-gradient( rgba(1, 2, 2, 0.5),rgba(215, 0, 0, 0.4)), url(${chef?.recipes[0]?.recipePicture})`,
                        
                         backgroundSize: 'cover',

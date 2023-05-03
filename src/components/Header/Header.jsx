@@ -6,7 +6,6 @@ import { Tooltip } from 'react-tooltip'
 import { FaUser } from 'react-icons/fa';
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
-    const [open, setOpen] = useState(false)
     const logOutHandler = () => {
         logOut().then(res => {
             console.log(res);

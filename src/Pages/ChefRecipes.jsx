@@ -12,7 +12,7 @@ const ChefRecipes = () => {
                     <h2 className="card-title">{chefName}</h2>
                     <p className='text-sm'>{bio}</p>
                     <p className='font-semibold'>Experience : {experience}</p>
-                    <p className='font-semibold'>Chef Likes : {likes.map(like => <>, {like}</>)}</p>
+                    <p className='font-semibold'>Chef Likes : {likes.map((like, index)=> <span className='mx-2' key={index}>{like}</span>)}</p>
                     <p className='font-semibold'>Available Recipes : {recipes.length}</p>
                 </div>
             </div>

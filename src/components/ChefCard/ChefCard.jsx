@@ -10,7 +10,7 @@ const ChefCard = ({chef}) => {
                 <h2 className="card-title">{chefName}</h2>
                 <p className='text-sm'>{bio}</p>
                 <p className='font-semibold'>Experience : {experience}</p>
-                <p className='font-semibold'>Chef Likes : {likes.map(like=> <>, {like}</>)}</p>
+                <p className='font-semibold'>Chef Likes : {likes.map((like, index)=> <span key={index}>{like},</span>)}</p>
                 <p className='font-semibold'>Available Recipes : {recipes.length}</p>
                 <div className="card-actions justify-end">
                     <Link to={`/recipes/${id}`} className='btn-custom'>View Recipes</Link>
