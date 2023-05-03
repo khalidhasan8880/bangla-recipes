@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
-
+import {FaGithub, FaGoogle} from 'react-icons/fa'
 const Login = () => {
     // hooks
-    const {logIn} = useContext(AuthContext)
+    const {logIn, continueWithGoogle} = useContext(AuthContext)
     const navigate = useNavigate()
     // handler
     const loginHandler = (e) => {
@@ -16,13 +16,16 @@ const Login = () => {
         const password = form.password.value
         logIn(email,password).then(res=>{
             console.log(res.user);
-            form.reset()
             navigate('/')
 
         }).catch(err=>{
             console.log(err);
         })
-        
+        form.reset()
+    }
+    const googleLoginHandler= ()  =>{
+        continueWithGoogle()
+        navigate('/')
     }
     return (
         <div className='flex justify-center '>
@@ -31,7 +34,12 @@ const Login = () => {
                 <input name='email' type="email" placeholder="Email" className="input input-bordered input-secondary w-full max-w-xs" />
                 <input name='password' type="password" placeholder="Password" className="input input-bordered input-secondary w-full max-w-xs" />
                 <button className='btn-custom' type='submit'>Log in</button>
+                <div className='flex justify-evenly'>
+                    <button onClick={googleLoginHandler} className='hover:text-pr' > <FaGoogle size={44}></FaGoogle></button>
+                    <button className='hover:text-pr' > <FaGithub size={44}></FaGithub></button>
+                </div>
                 <small>New to <span className='text-pr'>Bangla Recipes</span> website ? please <Link className='text-link' to='/sign-up'>Sign Up</Link></small>
+
                 <small className='text-pr'>error messages</small>
             </form>
         </div>
