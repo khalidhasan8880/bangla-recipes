@@ -4,7 +4,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import {FaGithub, FaGoogle} from 'react-icons/fa'
 const Login = () => {
     // hooks
-    const {logIn, continueWithGoogle} = useContext(AuthContext)
+    const {logIn, continueWithGoogle, continueWithGitHub} = useContext(AuthContext)
     const navigate = useNavigate()
     // handler
     const loginHandler = (e) => {
@@ -24,8 +24,16 @@ const Login = () => {
         form.reset()
     }
     const googleLoginHandler= ()  =>{
-        continueWithGoogle()
-        navigate('/')
+        continueWithGoogle().then(res=>{
+            console.log(res);
+            navigate('/')
+        })
+    }
+    const gitHubLoginHandler= ()  =>{
+        continueWithGitHub().then(res=>{
+            console.log(res);
+            navigate('/')
+        })
     }
     return (
         <div className='flex justify-center '>
@@ -36,7 +44,7 @@ const Login = () => {
                 <button className='btn-custom' type='submit'>Log in</button>
                 <div className='flex justify-evenly'>
                     <button onClick={googleLoginHandler} className='hover:text-pr' > <FaGoogle size={44}></FaGoogle></button>
-                    <button className='hover:text-pr' > <FaGithub size={44}></FaGithub></button>
+                    <button onClick={gitHubLoginHandler} className='hover:text-pr' > <FaGithub size={44}></FaGithub></button>
                 </div>
                 <small>New to <span className='text-pr'>Bangla Recipes</span> website ? please <Link className='text-link' to='/sign-up'>Sign Up</Link></small>
 
