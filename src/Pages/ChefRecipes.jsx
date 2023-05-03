@@ -18,8 +18,8 @@ const ChefRecipes = () => {
             </div>
 
             <div className='container mx-auto flex flex-col items-center justify-center mt-36'>
-                <h3 className='text-center mb-11 text-2xl font-bold'>Chefs</h3>
-                <div className='flex flex-wrap gap-8 justify-center  '>
+                <h3 className='text-center mb-11 text-2xl font-bold'>Available Recipes</h3>
+                <div className='grid sm:grid-cols-2 gap-3 justify-center  '>
                     {
                         recipes.map(recipe => <RecipeCard recipe={recipe}> </RecipeCard>)
                     }
