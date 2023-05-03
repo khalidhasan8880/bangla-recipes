@@ -1,23 +1,29 @@
 import React from 'react';
-
+import { useLoaderData } from 'react-router-dom';
+import RecipeCard from '../components/RecipeCard/RecipeCard';
 const ChefRecipes = () => {
+    const { id, picture, chefName, bio, likes, recipes, experience } = useLoaderData()
+
     return (
         <div className='container mx-auto rounded-lg p-4'>
-            <div className='grid grid-cols-2'>
-            <img className='w-full h-96 rounded-md mb-1' src="" alt="" />
-            <div className='bg-pr'>
-
-            </div>
-            </div>
-            <div className='grid grid-cols-2 sm:grid-cols-4 gap-x-1'>
-                <div className='flex justify-center items-center rounded-md bg-red-200 h-28 gap-x-6'>
-                    <FaBeer size={44}></FaBeer>
-                    <div >
-                        <h4 className='font-semibold'>Cook Time </h4>
-                        <p >{55} Min</p>
-                    </div>
+            <div className="card card-compact w-full bg-base-100 shadow-xl">
+                <figure><img style={{height: '77vh'}} src={picture} alt="Shoes" /></figure>
+                <div className="card-body">
+                    <h2 className="card-title">{chefName}</h2>
+                    <p className='text-sm'>{bio}</p>
+                    <p className='font-semibold'>Experience : {experience}</p>
+                    <p className='font-semibold'>Chef Likes : {likes.map(like => <>, {like}</>)}</p>
+                    <p className='font-semibold'>Available Recipes : {recipes.length}</p>
                 </div>
-               
+            </div>
+
+            <div className='container mx-auto flex flex-col items-center justify-center mt-36'>
+                <h3 className='text-center mb-11 text-2xl font-bold'>Chefs</h3>
+                <div className='flex flex-wrap gap-8 justify-center  '>
+                    {
+                        recipes.map(recipe => <RecipeCard recipe={recipe}> </RecipeCard>)
+                    }
+                </div>
             </div>
         </div>
     );

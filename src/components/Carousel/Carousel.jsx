@@ -1,5 +1,4 @@
 import React from 'react';
-import './Carousel.css'
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react';

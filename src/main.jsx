@@ -12,6 +12,7 @@ import Login from './Login&SignUp/Login/Login.jsx';
 import SignUp from './Login&SignUp/SignUp/SignUp.jsx';
 import AuthProvider from './AuthProvider/AuthProvider.jsx';
 import Home from './Pages/Home.jsx';
+import ChefRecipes from './Pages/ChefRecipes.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,11 +23,11 @@ const router = createBrowserRouter([
         element: <Home></Home>,
         loader:()=> fetch('https://bangla-recipes-server.vercel.app/')
       },
-      // {
-      //   path: '/recipe/:id',
-      //   element: <Recipe></Recipe>,
-      //   loader: ({params})=> fetch(`https://bangla-recipes-server-khalidhasan8880.vercel.app/recipe/${params.id}`)
-      // },
+      {
+        path:'/recipes/:id',
+        element: <ChefRecipes></ChefRecipes>,
+        loader: ({params})=>fetch(`https://bangla-recipes-server.vercel.app/chef/${params.id}`)
+      },
       {
         path: '/blog',
         element: <Blog></Blog>
