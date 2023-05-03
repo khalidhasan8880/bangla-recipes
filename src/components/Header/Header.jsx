@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
+import { FaUser } from 'react-icons/fa';
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
     const [open, setOpen] = useState(false)
@@ -21,18 +22,23 @@ const Header = () => {
             <div className="hidden sm:flex ">
                 <NavLink className={({ isActive }) => isActive ? 'text-pr font-semibold me-3' : 'me-3'} to='/'> Home</NavLink>
                 <NavLink className={({ isActive }) => isActive ? 'text-pr font-semibold me-3' : 'me-3'} to='/blog'> Blog</NavLink>
-                
+
                 {
                     user ?
                         <label data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img src={user?.photoURL} alt='Profile Picture' />
-                            </div>
+                            {
+                                user?.photoURL ?
+                                    <div className="w-10 rounded-full">
+                                        <img src={user?.photoURL} alt='Profile Picture' />
+                                    </div>
+                                    :
+                                    <FaUser size={22}></FaUser>
+                            }
                         </label>
                         :
                         ""
                 }
-<Tooltip  place='left' id="my-tooltip" />
+                <Tooltip place='left' id="my-tooltip" />
                 {user ? <Link onClick={logOutHandler} className='btn-custom'>Log out</Link> : <Link to="/login" className='btn-custom'>Log In</Link>}
             </div>
 

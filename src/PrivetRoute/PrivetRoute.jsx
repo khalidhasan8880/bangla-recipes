@@ -4,7 +4,12 @@ import { Navigate, useLocation } from 'react-router-dom';
 
 const PrivetRoute = ({children}) => {
     const location = useLocation()
-    const {user} = useContext(AuthContext)
+    const {user, loading} = useContext(AuthContext)
+    if (loading) {
+        return <div className='h-screen flex items-center justify-center'>
+            <progress className="progress w-56"></progress>
+        </div>
+    }
     if (user) {
         return children
     }

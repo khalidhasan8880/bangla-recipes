@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Login = () => {
     // hooks
     const {logIn} = useContext(AuthContext)
+    const navigate = useNavigate()
     // handler
     const loginHandler = (e) => {
+
         e.preventDefault()
         const form = e.target
 
@@ -14,6 +16,9 @@ const Login = () => {
         const password = form.password.value
         logIn(email,password).then(res=>{
             console.log(res.user);
+            form.reset()
+            navigate('/')
+
         }).catch(err=>{
             console.log(err);
         })
@@ -25,7 +30,7 @@ const Login = () => {
                 <h3 className='text-2xl font-semibold text-pr'>Please Sign Up</h3>
                 <input name='email' type="email" placeholder="Email" className="input input-bordered input-secondary w-full max-w-xs" />
                 <input name='password' type="password" placeholder="Password" className="input input-bordered input-secondary w-full max-w-xs" />
-                <button className='btn-custom' type='submit'>Register</button>
+                <button className='btn-custom' type='submit'>Log in</button>
                 <small>New to <span className='text-pr'>Bangla Recipes</span> website ? please <Link className='text-link' to='/sign-up'>Sign Up</Link></small>
                 <small className='text-pr'>error messages</small>
             </form>
