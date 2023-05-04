@@ -14,10 +14,12 @@ import AuthProvider from './AuthProvider/AuthProvider.jsx';
 import Home from './Pages/Home.jsx';
 import ChefRecipes from './Pages/ChefRecipes.jsx';
 import PrivetRoute from './PrivetRoute/PrivetRoute.jsx';
+import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
