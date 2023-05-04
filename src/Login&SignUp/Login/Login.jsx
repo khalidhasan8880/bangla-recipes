@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import {FaGithub, FaGoogle} from 'react-icons/fa'
@@ -6,12 +6,13 @@ const Login = () => {
     // hooks
     const {logIn, continueWithGoogle, continueWithGitHub} = useContext(AuthContext)
     const navigate = useNavigate()
+    const [error , setError] = useState('')
     // handler
     const loginHandler = (e) => {
 
         e.preventDefault()
         const form = e.target
-
+        setError('')
         const email = form.email.value
         const password = form.password.value
         logIn(email,password).then(res=>{
@@ -20,6 +21,7 @@ const Login = () => {
 
         }).catch(err=>{
             console.log(err);
+            setError
         })
         form.reset()
     }
@@ -27,12 +29,16 @@ const Login = () => {
         continueWithGoogle().then(res=>{
             console.log(res);
             navigate('/')
+        }).catch(err=>{
+            setError(err.message)
         })
     }
     const gitHubLoginHandler= ()  =>{
         continueWithGitHub().then(res=>{
             console.log(res);
             navigate('/')
+        }).catch(err=>{
+            setError(err.message)
         })
     }
     return (
@@ -48,7 +54,7 @@ const Login = () => {
                 </div>
                 <small>New to <span className='text-pr'>Bangla Recipes</span> website ? please <Link className='text-link' to='/sign-up'>Sign Up</Link></small>
 
-                <small className='text-pr'>error messages</small>
+                <small className='text-pr'>{error}</small>
             </form>
         </div>
     );

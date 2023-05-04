@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import LazyLoad from 'react-lazy-load';
 const ChefCard = ({chef}) => {
     const {id, picture, chefName, bio, likes, recipes, experience } = chef
     return (
         <div className="card card-compact w-96 bg-base-100 shadow-xl">
-            <figure><img src={picture} alt="Shoes" /></figure>
+            <figure>
+                <LazyLoad threshold={.95}>
+                    <img src={picture} alt="Shoes" />
+                </LazyLoad>
+            </figure>
             <div className="card-body">
                 <h2 className="card-title">{chefName}</h2>
                 <p className='text-sm'>{bio}</p>

@@ -28,7 +28,9 @@ const SignUp = () => {
             setError('password must be 6 character or more !!')
             return
         }
-
+        if (!email && password) {
+            setError('You cannot submit with empty email and password fields')
+        }
         createUser(email,password).then((result)=>{
             updateInformation(name, photo)
             console.log(result.user);
@@ -36,6 +38,7 @@ const SignUp = () => {
 
         })
         .catch((err)=>{
+            setError(err.message)
             console.log(err);
         })
     }
