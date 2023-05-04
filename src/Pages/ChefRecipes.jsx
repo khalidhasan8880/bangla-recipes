@@ -10,7 +10,7 @@ const ChefRecipes = () => {
             <div className="card card-compact w-full bg-base-100 shadow-xl">
                 <figure>
                     <LazyLoad >
-                        <img style={{ height: '77vh' }} src={picture} alt="Shoes" />
+                        <img style={{ height: '77vh' }} src={picture} alt="recipe" />
                     </LazyLoad>
                 </figure>
                 <div className="card-body">

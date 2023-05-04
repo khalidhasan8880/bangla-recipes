@@ -25,7 +25,7 @@ const RecipeCard = ({ recipe }) => {
             <Toaster />
             <figure>
                 <LazyLoad>
-                    <img src={recipePicture} alt="Shoes" />
+                    <img src={recipePicture} alt="recipe" />
                 </LazyLoad>
             </figure>
             <div className="card-body">

@@ -13,7 +13,7 @@ const Card = ({ recipe }) => {
         <div className="card w-96 bg-base-100 shadow-xl image-full">
             <figure>
                 <LazyLoad threshold={.95}>
-                    <img src={recipePicture} alt="Shoes" />
+                    <img src={recipePicture} alt="" />
                 </LazyLoad>
             </figure>
             <div className="card-body">

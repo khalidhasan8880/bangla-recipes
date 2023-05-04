@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
 import Carousel from '../components/Carousel/Carousel';
 import ChefCard from '../components/ChefCard/ChefCard';
 import Card from '../components/Card/Card';
