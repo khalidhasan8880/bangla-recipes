@@ -30,6 +30,11 @@ const router = createBrowserRouter([
         loader: ({params})=>fetch(`https://bangla-recipes-server.vercel.app/chef/${params.id}`)
       },
       {
+        path:'/recipe/:id',
+        element: <PrivetRoute><ChefRecipes></ChefRecipes></PrivetRoute>,
+        loader: ({params})=>fetch(`https://bangla-recipes-server.vercel.app/recipe/${params.id}`)
+      },
+      {
         path: '/blog',
         element: <Blog></Blog>
       },

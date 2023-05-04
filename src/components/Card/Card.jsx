@@ -1,14 +1,13 @@
 import { Rating } from '@smastrom/react-rating';
 import React from 'react';
 import LazyLoad from 'react-lazy-load';
+import { Link } from 'react-router-dom';
 const Card = ({ recipe }) => {
     const {
+        recipeId,
         recipeName,
-        recipeLike,
         recipeRating,
-        recipePicture,
-        ingredients,
-        instructions
+        recipePicture
     } = recipe
     return (
         <div className="card w-96 bg-base-100 shadow-xl image-full">
@@ -18,14 +17,14 @@ const Card = ({ recipe }) => {
                 </LazyLoad>
             </figure>
             <div className="card-body">
-                <h2 className="card-title">{recipeName}</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions">
-                    <div className='flex justify-between items-center w-full'>
+                <h2 className="card-title text-white">{recipeName}</h2>
+                <p></p>
+                <div className="card-actions justify-end">
+                    <div className='flex justify-between w-full'>
                         <div>
                             <Rating style={{ maxWidth: 100 }} value={Math.round(recipeRating || 0)} readOnly />
                         </div>
-                        <button className='btn-custom'>View Details</button>
+                        <Link to={`/recipe/${recipeId}`} className='btn-custom'>View Details</Link>
                     </div>
                 </div>
             </div>
