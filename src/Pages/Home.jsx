@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Carousel from '../components/Carousel/Carousel';
 import ChefCard from '../components/ChefCard/ChefCard';
@@ -6,9 +6,27 @@ import Card from '../components/Card/Card';
 import Sponsers from '../components/Sponsers/Sponsers';
 
 const Home = () => {
-    const { chefs } = useLoaderData()
-
+    // const { chefs } = useLoaderData()
     
+    const [chefs, setChefs] = useState([])
+    const [loading, setLoading] = useState(true)
+    useEffect(()=>{
+        fetch('https://bangla-recipes-server.vercel.app/')
+        .then(res=>res.json())
+        .then(data => {
+            setChefs(data.chefs)
+            setLoading(false)
+        })
+        
+    },[])
+    
+    if (loading) {
+        return (
+                <div className='h-screen flex items-center justify-center'>
+                    <progress className="progress w-56"></progress>
+                </div>
+            )
+    }
     return (
         <div>
             {/* banner  */}
