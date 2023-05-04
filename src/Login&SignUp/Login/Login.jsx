@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import {FaGithub, FaGoogle} from 'react-icons/fa'
 const Login = () => {
@@ -7,6 +7,8 @@ const Login = () => {
     const {logIn, continueWithGoogle, continueWithGitHub} = useContext(AuthContext)
     const navigate = useNavigate()
     const [error , setError] = useState('')
+    const location = useLocation()
+    const from = location?.state?.from?.pathname || '/';
     // handler
     const loginHandler = (e) => {
 
@@ -17,18 +19,18 @@ const Login = () => {
         const password = form.password.value
         logIn(email,password).then(res=>{
             console.log(res.user);
-            navigate('/')
+            navigate(from)
 
         }).catch(err=>{
             console.log(err);
-            setError
+           
         })
         form.reset()
     }
     const googleLoginHandler= ()  =>{
         continueWithGoogle().then(res=>{
             console.log(res);
-            navigate('/')
+            navigate(from)
         }).catch(err=>{
             setError(err.message)
         })
@@ -36,7 +38,7 @@ const Login = () => {
     const gitHubLoginHandler= ()  =>{
         continueWithGitHub().then(res=>{
             console.log(res);
-            navigate('/')
+            navigate(from)
         }).catch(err=>{
             setError(err.message)
         })
@@ -47,7 +49,7 @@ const Login = () => {
                 <h3 className='text-2xl font-semibold text-pr'>Please Sign Up</h3>
                 <input name='email' type="email" placeholder="Email" className="input input-bordered input-secondary w-full max-w-xs" />
                 <input name='password' type="password" placeholder="Password" className="input input-bordered input-secondary w-full max-w-xs" />
-                <button className='btn-custom' type='submit'>Log in</button>
+                <button onClick={loginHandler} className='btn-custom' type='submit'>Log in</button>
                 <div className='flex justify-evenly'>
                     <button onClick={googleLoginHandler} className='hover:text-pr' > <FaGoogle size={44}></FaGoogle></button>
                     <button onClick={gitHubLoginHandler} className='hover:text-pr' > <FaGithub size={44}></FaGithub></button>
