@@ -23,8 +23,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home></Home>,
-        // loader:()=> fetch('https://bangla-recipes-server.vercel.app/')
+        element: <Home></Home>
       },
       {
         path:'/recipes/:id',
