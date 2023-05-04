@@ -15,6 +15,7 @@ import Home from './Pages/Home.jsx';
 import ChefRecipes from './Pages/ChefRecipes.jsx';
 import PrivetRoute from './PrivetRoute/PrivetRoute.jsx';
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
+import Profile from './Pages/Profile.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
+      },
+      {
+        path: '/profile',
+        element: <Profile></Profile>
       },
       {
         path:'/recipes/:id',

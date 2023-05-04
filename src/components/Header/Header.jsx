@@ -28,7 +28,7 @@ const Header = () => {
                             {
                                 user?.photoURL ?
                                     <div className="w-10 rounded-full">
-                                        <img src={user?.photoURL} alt='Profile Picture' />
+                                        <Link to='profile'><img src={user?.photoURL} alt='Profile Picture' /></Link>
                                     </div>
                                     :
                                     <FaUser data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName}  size={22}></FaUser>
@@ -64,6 +64,9 @@ const Header = () => {
                 }
                 <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
 
+                    <li>
+                        <NavLink  className={({ isActive }) => isActive ? 'text-pr font-semibold me-3' : 'me-3'} to='/profile'> Profile</NavLink>
+                    </li>
                     <li>
                         <NavLink className={({ isActive }) => isActive ? 'text-pr font-semibold me-3' : 'me-3'} to='/'> Home</NavLink>
                     </li>

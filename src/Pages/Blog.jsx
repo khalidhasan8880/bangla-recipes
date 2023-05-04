@@ -1,8 +1,15 @@
 import React from 'react';
 
 const Blog = () => {
+
+    const ref = React.createRef();
     return (
-        <div className='grid grid-cols-1 Class Properties divide-solid divide-y-2 container mx-auto gap-20 text-2xl'>
+        <div  ref={ref} className='grid grid-cols-1 Class Properties divide-solid divide-y-2 container mx-auto gap-20 text-2xl'>
+            <ReactToPdf targetRef={ref} filename="div-blue.pdf">
+                {({ toPdf }) => (
+                    <button onClick={toPdf}>Generate pdf</button>
+                )}
+            </ReactToPdf>
             <div>
                 <h3 className='font-semibold '>1. Tell us the differences between uncontrolled and controlled components.</h3>
                 <p>Ans :

@@ -28,7 +28,7 @@ const RecipeCard = ({ recipe }) => {
                     <img src={recipePicture} alt="recipe" />
                 </LazyLoad>
             </figure>
-            <div className="card-body">
+            <div className="card-body ">
                 <h2 className="card-title">{recipeName}</h2>
                 <h3 className='text-2xl'>Ingredients : </h3>
                 <ol>
