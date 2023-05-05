@@ -2,14 +2,9 @@ import React from 'react';
 
 const Blog = () => {
 
-    const ref = React.createRef();
     return (
-        <div  ref={ref} className='grid grid-cols-1 Class Properties divide-solid divide-y-2 container mx-auto gap-20 text-2xl'>
-            <ReactToPdf targetRef={ref} filename="div-blue.pdf">
-                {({ toPdf }) => (
-                    <button onClick={toPdf}>Generate pdf</button>
-                )}
-            </ReactToPdf>
+        
+        <div   className='grid grid-cols-1 Class Properties divide-solid divide-y-2 container mx-auto gap-20 text-2xl'>
             <div>
                 <h3 className='font-semibold '>1. Tell us the differences between uncontrolled and controlled components.</h3>
                 <p>Ans :
@@ -19,7 +14,7 @@ const Blog = () => {
             </div>
             <div>
                 <h3 className='font-semibold '> 2. How to validate React props using PropTypes?</h3>
-                <p>Ans : First of all we need to install <span className='italic'>npm install prop-types --save</span> and <span className='italic'>import  PropTypes  from "prop-types";</span> Suppose We have a component and the component name are Hero. Now We can use Hero.PropTypes then second bracket like an object. object Properties will be PropType.string or PropType.object or any  primitive and non primitive. If props does not matched with given primitive or non primitive value then it will give a warning in console for Developers. This Warning not going to production</p>
+                <p>Ans : First of all we need to install <span className='italic'>npm install prop-types --save</span> and <span className='italic'>import  PropTypes  from "prop-types";</span> Suppose We have a component and the component name are Hero. Now We can use Hero.PropTypes then second bracket like an object. Object Properties will be PropType.string or PropType.object or any  primitive and non primitive. If props does not matched with given primitive or non primitive value then it will give a warning in console for Developers. This Warning not going to production</p>
             </div>
             <div>
                 <h3 className='font-semibold '> 3. Tell us the difference between nodejs and express js.</h3>
