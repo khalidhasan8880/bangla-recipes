@@ -4,9 +4,11 @@ import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import toast, { Toaster } from 'react-hot-toast';
 import LazyLoad from 'react-lazy-load';
+import { addToDb } from '../../FakeDb/FakeDb';
 const RecipeCard = ({ recipe }) => {
     const [favorite, setFavorite] = useState(false)
     const {
+        recipeId,
         recipeName,
         recipeLike,
         recipeRating,
@@ -15,7 +17,8 @@ const RecipeCard = ({ recipe }) => {
         instructions
     } = recipe
 
-    const favoriteHandler = (name)=>{
+    const favoriteHandler = (name, id)=>{
+        addToDb(id)
         setFavorite(true)
         toast.success(name + ' Added Favorite')
         
@@ -51,7 +54,7 @@ const RecipeCard = ({ recipe }) => {
                         <div>
                         <Rating style={{ maxWidth: 100 }} value={Math.round(recipeRating || 0)}  readOnly/>
                         </div>
-                    <button onClick={()=> favoriteHandler(recipeName)} className={favorite? 'btn' : 'btn-custom'} disabled={favorite ? true : false}>{favorite? <>Added Favorite</>: <>Add To Favorite</>}</button>
+                    <button onClick={()=> favoriteHandler(recipeName, recipeId)} className={favorite? 'btn' : 'btn-custom'} disabled={favorite ? true : false}>{favorite? <>Added Favorite</>: <>Add To Favorite</>}</button>
                     </div>
                 </div>
             </div>

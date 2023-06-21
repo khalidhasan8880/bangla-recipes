@@ -33,8 +33,8 @@ const Home = () => {
                 <Carousel chefs={chefs}></Carousel>
             </div>
             {/* chef cards */}
-            <div className='container mx-auto flex flex-col items-center justify-center mt-36'>
-                <h3 className='text-center mb-11 text-2xl font-bold'>Chefs</h3>
+            <div className='container mx-auto flex flex-col items-center justify-center mt-44'>
+                <h3 className='text-center mb-20 text-3xl sm:text-5xl font-bold'>Chefs</h3>
                 <div className='flex flex-wrap gap-8 justify-center  '>
                     {
                         chefs.map(chef => <ChefCard key={chef.id} chef={chef}></ChefCard>)
@@ -42,8 +42,8 @@ const Home = () => {
                 </div>
             </div>
             {/* extra section 1 */}
-            <div className='container mx-auto flex flex-col items-center justify-center mt-36'>
-                <h3 className='text-center mb-11 text-2xl font-bold'>Some Recipes</h3>
+            <div className='container mx-auto flex flex-col items-center justify-center mt-44'>
+                <h3 className='text-center mb-20 text-3xl sm:text-5xl font-bold'>Popular Recipes</h3>
                 <div className='flex flex-wrap gap-8 justify-center  '>
                     {
                         chefs.map(chef => {
